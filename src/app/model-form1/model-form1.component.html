@@ -1,0 +1,73 @@
+<form [formGroup]="myModelForm" (ngSubmit)="onSubmit()" class="form">
+
+    
+        <label for="firstname">First Name </label>
+        <input type="text" id="firstname" formControlName="firstname" required>      
+
+        <div *ngIf="!myModelForm.controls.firstname?.valid
+         && (myModelForm.controls.firstname?.dirty
+        ||myModelForm.controls.firstname?.touched)"> <small>First Name is not valid</small></div>      
+
+    <p>
+        <label for="lastname">Last Name </label>
+        <input type="text" id="lastname" formControlName="lastname">
+    </p>
+
+    <p>
+        <label for="email">Email </label>
+        <input type="text" id="email" formControlName="email">
+    </p>
+
+    <p>
+        <label for="gender">Geneder </label>
+        <input type="radio" value="male" id="gender" formControlName="gender"> Male
+        <input type="radio" value="female" id="gender" formControlName="gender"> Female
+    </p>
+
+    <p>
+        <label for="isMarried">Married </label>
+        <input type="checkbox" id="isMarried" formControlName="isMarried">
+    </p>
+
+
+    <p>
+        <label for="country">country </label>
+        <select id="country" formControlName="country">
+            <option value="1">India</option>
+            <option value="2">USA</option>
+            <option value="3">England</option>
+            <option value="4">Singapore</option>
+        </select>
+    </p>
+
+
+    <div formGroupName="address">
+        <p>
+            <label for="city">City</label>
+            <input type="text" name="city" formControlName="city">
+        </p>
+
+        <p class="form-group">
+            <label for="street">Street</label>
+            <input type="text" name="street" formControlName="street">
+        </p>
+
+        <p class="form-group">
+            <label for="pincode">Pin Code</label>
+            <input type="text" name="pincode" formControlName="pincode">
+        </p>
+
+        <p>
+            <label for="country">country </label>
+            <select id="country" name="country" formControlName="country">
+                <option value="1">India</option>
+                <option value="2">USA</option>
+                <option value="3">England</option>
+                <option value="4">Singapore</option>
+            </select>
+        </p>
+    </div>
+    <p>
+        <button type="submit" [disabled]="!myModelForm.valid">Submit</button>
+    </p>
+</form>

@@ -1,0 +1,20 @@
+<p>observable1 works!</p>
+<h4>user list-:</h4>
+    <table class="table table-bordered">
+        <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+        </tr>
+    </table>
+    ==================================================
+    <h4>comment list-:</h4>
+    <table class="table table-bordered">
+        <tr *ngFor="let comment of comments">
+            <td>{{comment.id}}</td>
+            <td>{{comment.postId}}</td>
+            <td>{{comment.name}}</td>
+            <td>{{comment.email}}</td>
+        </tr>
+    </table>

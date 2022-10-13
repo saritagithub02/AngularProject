@@ -1,0 +1,9 @@
+.headerDemo{
+    background-color: cadetblue;
+    text-align: center;
+    height:40px;
+    color:black;
+    font-weight: bold;
+    font-style: italic;
+    font-size: large;
+}

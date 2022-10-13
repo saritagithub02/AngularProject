@@ -1,0 +1,17 @@
+<p>parent works!</p>
+<div class="container ">
+    <div class="row parent">
+        <div>I am parent own data-{{a}}</div>
+        <div>data from child1-{{product}}</div>
+        <div>Data from child with out emittor-{{child1.name}}</div>
+        <div class="col-sm-6 child">
+            <app-child1 [aparent]="a" #child1 (nameEvent)="getDataFromChild($event)">
+            
+            </app-child1>
+        </div>
+        <div class="col-sm-6 child">
+            <app-child2  [childref]="child1"></app-child2>
+            <!-- <app-child2  [aparent1]="product"></app-child2> -->
+        </div>
+    </div>
+</div>

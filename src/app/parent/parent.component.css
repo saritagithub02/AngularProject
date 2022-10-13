@@ -1,0 +1,9 @@
+.parent{
+    border:1px solid red;
+    margin: 1px;
+    padding: 10px;;
+}
+.child{
+    border:1px dashed blue;
+    padding: 10px;;
+}

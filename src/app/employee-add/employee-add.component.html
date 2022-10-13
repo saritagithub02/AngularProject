@@ -1,0 +1,30 @@
+<div class="container border  border-primary">
+    <h5 class="text-center">Employee Add</h5>
+    <div class="row">
+        <div class="col spanemp">
+            id
+        </div>
+        <div class="col"><span class="empInput"><input type="number" #empId></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col spanemp">Name</div>
+        <div class="col"><span class="empInput"><input type="text" #empname></span></div>
+    </div>
+    <div class="row">
+        <div class="col spanemp">salary</div>
+        <div class="col"> <span class="empInput"> <input type="number" #empsal></span></div>
+    </div>
+    <div class="row">
+        <div class="col spanemp">Gender</div>
+        <div class="col"><span class="empInput"><input type="text" #empgender></span></div>
+    </div>
+    <div class="row">
+        <div class="col spanemp"></div>
+        <div class="col">
+            <button class="btn btn-primary"
+             (click)="sendToEmpCrud(+empId.value,empname.value,+empsal.value,empgender.value)">
+                Add</button>
+        </div>
+    </div>
+</div>

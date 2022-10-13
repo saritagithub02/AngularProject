@@ -1,0 +1,49 @@
+<h3 class="text-center">Employees Details</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <th>SLNo</th>
+                        <th>Employee ID</th>
+                        <th>Employee Name</th>
+                        <th>Sal</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let emp of employees; let i=index;trackBy:trackByEmpId">
+                        <td>{{i+1}}</td>
+                        <td>{{emp.eId}}</td>
+                        <td>{{emp.name| genderSuffix:emp}}</td>
+                        <td>{{emp.sal}}</td>
+                        <td>
+                            <button type="button" class="btn btn-danger" (click)="delete(emp.eId)">DELETE</button>&nbsp;
+                            <button type="button" class="btn btn-primary" (click)="view(emp.eId)">VIEW</button>&nbsp;
+                            <button type="button" class="btn btn-secondary" (click)="edit(emp.eId)">EDIT</button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-4 border border-primary">
+            <h3 class="text-center">Employees Add</h3>
+            <!-- <form action=""> -->
+            EmployeeId &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <input type="number" [(ngModel)]="val1"><br />
+            EmployeeName &nbsp;<input type="text" [(ngModel)]="val2">
+            EmployeeSal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" [(ngModel)]="val3"><br /><br />
+            <div style="text-align:center ;">
+                <!-- <button id="id_View" type="button" [disabled]="flag" class="btn btn-primary mr-1" (click)="add()">{{
+                    flagbtn?'Add Employee':'Update Employee'}}
+                </button> -->
+                <button id="id_View" type="button" class="btn btn-primary mr-1" (click)="add()">{{
+                    flagbtn?'Add Employee':'Update Employee'}}
+                </button>
+            </div>
+            <!-- </form> -->
+        </div>
+    </div>
+</div>
+

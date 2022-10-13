@@ -1,0 +1,19 @@
+<p>forkjoin works!</p>
+<table class="table table-bordered">
+    <thead>
+        <td>id</td>
+        <td>login</td>
+        <td>name</td>
+        <td>followers</td>
+        <td>following</td>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of finalData">
+            <td>{{data.id}}</td>
+            <td>{{data.login}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.followers}}</td>
+            <td>{{data.following}}</td>
+        </tr>
+    </tbody>
+</table>

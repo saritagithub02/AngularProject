@@ -1,0 +1,151 @@
+<h3 class="text-center">Registration Form</h3>
+<form #myForm="ngForm" (submit)="submitMyForm(myForm.value)" class="form">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <label>First Name</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" name="firstName" ngModel id="firstName" required minlength="6" pattern="[a-zA-Z]+"
+                    #fname="ngModel" />
+                <div><small *ngIf="fname.invalid && fname.touched">
+                        First name is required
+                    </small></div>
+                <div> <small *ngIf="fname.hasError('pattern') && fname.dirty" class="text-danger">
+                        Only alphabets allowed</small></div>
+                <div><small *ngIf="fname.hasError('minlength') && fname.dirty"> Min 6 characters Required </small></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <label for="lastName">Last Name</label>
+            </div>
+            <div class="col-sm-2">
+                <input name="lastName" ngModel />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <label for="age">Age</label>
+            </div>
+            <div class="col-sm-2">
+                <input name="age" ngModel #age="ngModel" required pattern="[0-9]{2}" />
+                <div> <small *ngIf="age.invalid && age.touched" class="text-danger">Age is required</small></div>
+                <div><small *ngIf="age.hasError('pattern') && age.dirty" class="text-danger">Only Numbers
+                        allowed</small></div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2">
+                <label for="email">Email</label>
+            </div>
+            <div class="col-sm-2">
+                <input name="Email" type="email" ngModel #email="ngModel" required  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+                <div> <small *ngIf="email.invalid && email.touched" class="text-danger">email is required</small></div>
+                <div><small *ngIf="email.hasError('pattern') && email.dirty" class="text-danger">Email address is invalid
+                </small></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <label> Gender : </label>
+            </div>
+            <div class="col-sm-2">
+                <input type="radio" name="gender" value="male" ngModel /> Male <br>
+                <input type="radio" name="gender" value="female" ngModel /> Female <br>
+                <input type="radio" name="gender" value="other" ngModel /> Other
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <label for="pin">Is Married</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="checkbox" id="isMarried" name="isMarried" ngModel>
+            </div>
+        </div>
+        <div ngModelGroup='address'>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label for="street">Street</label>
+                </div>
+                <div class="col-sm-1">
+                    <input name="street" ngModel />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <label> city : </label>
+                </div>
+                <div class="col-sm-2">
+                    <select class="select" id="city" name="city" [(ngModel)]="cityId">
+                        <option value="City">City</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Kolkatta">Kolkatta</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label> State: </label>
+                </div>
+                <div class="col-sm-2">
+                    <select class="select" id="state" name="state" [(ngModel)]="stateId">
+                        <option value="State">State</option>
+                        <option value="MH">MH</option>
+                        <option value="UP">UP</option>
+                        <option value="WB">WB</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label for="pin">Pin code</label>
+                </div>
+                <div class="col-sm-1">
+                    <input name="pin" ngModel />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <label for="comment">About</label>
+            </div>
+            <div class="col-sm-2">
+                <textarea required ngModel #comment="ngModel" name="comment" id="comment" cols="40" rows="8"></textarea>
+                <div class="alert alert-danger" *ngIf="comment.touched && !comment.valid">
+                    Comment is required.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="reset" class="btn btn-secondary" value="clear">Reset </button>
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" value="Submit" class="btn btn-success" [disabled]="!myForm.valid">Submit
+                    </button>
+            </div>
+        </div>
+        <!-- <div class="row">
+        <div class="col-sm-2">
+            <input type="checkbox" name="acceptTerms" ngModel />
+
+      <label for="acceptTerms" class="form-check-label">
+        I have read and agree to the Terms
+      </label>
+      
+        </div>
+    </div> -->
+    </div>
+</form>
+<hr>
+<div> Form Value: {{ myForm.value | json }}</div>
+<div> Form Valid Status: {{ myForm.status | json }} </div>
+
+<!-- <div>First Name Value: {{firstName.value}}</div> -->
+<!-- <div>Age Value: {{age.value}}</div> -->

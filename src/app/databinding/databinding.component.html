@@ -1,0 +1,96 @@
+<!-- Interpolation data binding -->
+<div>My Name is:- {{name}}</div>
+<div><span [innerHTML]="name"></span></div>
+
+<!-- interpolation -->
+<img src={{img_url}} alt="" height="200px" width="200px">
+
+<!-- property binding -->
+<img [src]="img1_url" alt="" height="200px" width="200px">
+<img bind-src="img_url" alt="" height="200px" width="200px">
+
+<!-- Textbox app-databinding -->
+<br />
+<input value={{name}} />
+<input [value]="name" />
+<input bind-value="name" />
+<br/>
+<!-- 2-way Binding: html=>ts and ts=>html both way
+	     import FormsModule and add it to our Module(App.module.ts)
+		a. import { FormsModule } from '@angular/forms'
+		b. imports: [ BrowserModule,FormsModule] -->
+2way binding-:<input [(ngModel)]="name" />
+<input bindon-ngModel='name' />
+<h4>your name is {{name}}</h4>
+<br />
+<!-- interpolation Binding works fine for strings but not for boolean values
+ with in a html attributes -->
+<button disabled={{flag}} class="btn btn-primary">click</button>
+<br />
+<button [disabled]="flag" class="btn btn-primary">click</button>
+<button bind-disabled="flag" class="btn btn-primary">click</button>
+
+<!-- Accessing object values -->
+<div>{{user|json}}</div>
+<div>{{user.name}}</div>
+
+<!-- Getting Array values -->
+<div>{{cars}}</div>
+
+<!-- Event Binding -->
+<button (click)="f1()">Show Message</button>
+
+<!--Assignment-1 onclick of a button the h1 content shows and hides based on the flag value 
+    in the ts file -->
+<br />
+<h3 [hidden]="flag">Hello Angular Data binding</h3>
+<button (click)="ToggleText()">Show/Hide</button>
+<br />
+<!-- Dynamically change the button's text -->
+<button (click)="ToggleText()">{{flag?'Show':'Hide'}}</button>
+<br /><br />
+
+<!-- Assignment-2 create an input box. when hide is clicked its in password format.
+ when show is clicked textbox value is shown to user. -->
+<input [type]="showPwd ? 'text' : 'password'" />
+<button (click)="showPassword()">{{showPwd?'Hide':'Show'}}</button>
+
+<!-- Take two input boxes. add 2nums.show it in a paragraph using 2way binding -->
+<br />================================================================
+<br />
+<input [(ngModel)]="val1" type="number" />
+<input [(ngModel)]="val2" type="number" />
+<p>Addition is {{val1+val2}}</p>
+
+<!-- Template Reference variables -->
+<br />==============================================================
+<br />
+Number1:<input type="number" #num1>
+Number2:<input type="number" ref-num2>
+<br />
+<button (click)="add(+num1.value,+num2.value)" class="btn btn-primary">Add</button>
+<br/>=============================================================<br/>
+<!-- class Binding -->
+<h1>Class Binding</h1>
+<input [(ngModel)]="val3" type="number" />
+<h3 [class.text-danger]="val3%2 !=0">{{val3}} is {{val3%2==0?'Even':'odd'}}</h3>
+
+<!-- use of both static class and dynamic class -->
+ <btn class="btn" [ngClass]="flag?'btn-success':'btn-danger'">Class-Binding</btn>
+ <br/>=============================================================<br/>
+ <!-- style Binding -->
+ <h3>Style Binding</h3>
+ <p [style.color]="flag?'green':'red'">This is style binding</p>
+ <br/>=============================================================
+ <h4>
+	<p [class.bindClass]='classFlag'> Add a class to an element </p>
+	<p [ngClass]="myClasses"> Add Multiple classes to an element </p>
+	<p [ngClass]="myFunction()"> Add Multiple classes to an element </p>
+  </h4>
+  =============================================================<br/> 
+  <h3>a is {{a}} b is {{b}} addition is {{a+b}}</h3>
+
+  <h3>{{ 'a is '+a+' b is '+b+' additon is '+(a + b) }}</h3>
+ <h4>{{'sum of 2 and 3 is-:'+2+3}}</h4>
+ <h4>{{2+3}}</h4>
+ <h4 [innerHTML]="2+3"></h4>

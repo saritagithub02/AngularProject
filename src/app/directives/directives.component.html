@@ -1,0 +1,55 @@
+<!-- If condition for showing html content -->
+<input [(ngModel)]="n" type="number">
+<p *ngIf="n%2==0">paragraph is showing based on if condition.</p>
+<h3 style="color:green" *ngIf="n%2==0">{{n}} is an even number</h3>
+<h3 style="color:red" *ngIf="n%2!=0">{{n}} is an odd number</h3>
+<!-- if-else condition  using template reference variable-->
+<div *ngIf="n%2==0;else oddblock" >{{n}} is an even number.</div>
+<ng-template #oddblock>{{n}} is an odd number.</ng-template>
+<!-- switch condition -->
+<h4 [ngSwitch]="n">
+    <p *ngSwitchCase="1">Monday</p>
+    <p *ngSwitchCase="2">Tuesday</p>
+    <p *ngSwitchCase="3">Wednesday</p>
+    <p *ngSwitchCase="4">Thursday</p>
+    <p *ngSwitchCase="5">Friday</p>
+    <p *ngSwitchCase="6">Saturday</p>
+    <p *ngSwitchCase="7">Sunday</p>
+    <p *ngSwitchDefault>Not a valid number for day showing.</p>
+</h4>
+===================================================================
+<!-- ngFor directive for for-loop -->
+<!-- fetch single element -->
+<div>{{cars[3]}}</div> 
+--------------------------
+<!-- fetch all the elements in the array -->
+<!-- only let keyword is used not var and const -->
+<div *ngFor="let car of cars">{{car}}</div>
+-------------------------------- index
+<!-- index is a predefined word -->
+<div *ngFor="let car of cars;let i =index">{{car}}--{{i}}</div>
+---------------------------------odd
+<!-- odd and even members -->
+<div *ngFor="let car of cars;let i =index;let x =odd">{{car}}--{{i}}--{{x}}</div>
+----------------------------------Even
+<div *ngFor="let car of cars;let i =index;let x=even">{{car}}--{{i}}--{{x}}</div>
+=======================================================================
+<!-- use of optional chaining operator->?. -->
+<table border="1">
+    <tr border="1">
+        <th>Index</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Sal</th>
+        <th>city</th>
+        <th>state</th>
+    </tr>
+    <tr *ngFor="let emp of employees;let i=index">
+        <td>{{i+1}}</td>
+        <td>{{emp.eId}}</td>
+        <td>{{emp.name}}</td>
+        <td>{{emp.sal}}</td>  
+        <td>{{emp.add?.city}}</td>  
+        <td>{{emp.add?.state}}</td>        
+    </tr>
+</table>

@@ -1,0 +1,40 @@
+<p class="header display-4">products List</p>
+
+<div class="container">   
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <div class="form-outline">               
+                <input [(ngModel)]="searchText"  type="search" class="form-control rounded" placeholder="Search" aria-label="Search"/>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <button class="btn btn-primary" (click)="sortPrice('Asc')">ASC Price</button>
+            <button class="btn btn-secondary" (click)="sortPrice('Desc')">DESC Price</button>
+        </div>
+    </div> 
+    <div class="row row-cols-3">
+        <div class="col" *ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: p }
+        | filter : searchText">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text"><img [src]="product.image" width="80px" height="100px"></p>
+                    <p class="card-text"><span class="fontAttr">Id-</span>{{product.id}}</p>
+                    <p class="card-text"><span class="fontAttr">Title-</span>{{product.title}}</p>
+                    <p class="card-text"><span class="fontAttr">Price-</span>{{product.price}}</p>
+                    <p class="card-text"><span class="fontAttr">Catagory-</span>{{product.category}}</p>
+                    <p class="card-text"><button class="btn btn-primary" (click)="addProduct(product)">Add to Cart</button>&nbsp;
+                    <!-- <button class="btn btn-primary">Add to Wishlist</button> -->
+                    <button class="btn btn-primary" [routerLink]="['/ProductDetailsRouteParam', product.id]">View Details</button>
+                </p>
+                <p>
+                    <button class="btn btn-success" [routerLink]="['/ProductDetailsQueryParam']"
+                    [queryParams]="{id:product.id,name:product.title,price:product.price}">View Details</button>
+                </p>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>
+
+<div class="text-center"><pagination-controls (pageChange)="p = $event"></pagination-controls></div>

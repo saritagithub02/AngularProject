@@ -1,0 +1,21 @@
+<img src="https://image.shutterstock.com/image-vector/shopping-cart-vector-icon-flat-260nw-1690453492.jpg"
+height="30" width="30">
+<!-- cart-{{cartItems?.length}} -->
+<table border="1" style="color:black">
+    <thead>
+        <td>id</td>
+        <td>title</td>
+        <td>price</td>
+        <td>catagory</td>
+    </thead>
+    <tr *ngFor="let item of cartItems">
+<td>{{item.product.id}}</td>
+<td>{{item.product.title}}</td>
+<td>{{item.product.price}}</td>
+<td>{{item.product.category}}</td>
+    </tr>
+    <tr column-span="4"><td>
+        <button class="btn btn-primary" (click)="clearCart()">clear cart</button>
+    </td></tr>
+</table>
+
